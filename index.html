@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Prova · Banco de Dados I · BES-2026</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="faixa-inst"></div>
+
+  <!-- ===================== LANDING ===================== -->
+  <section id="tela-inicio" class="landing">
+    <div class="landing-caixa">
+      <div class="marca">
+        <div class="marca-id">
+          <img src="img/uepa-logo.png" alt="Brasão da Universidade do Estado do Pará">
+          <div>
+            <div class="inst">Universidade do Estado do Pará · Engenharia de Software</div>
+            <div class="sobre" id="l-sobre">Banco de Dados I · Turma BES-2026</div>
+            <h1 id="l-titulo">Avaliação individual</h1>
+            <div class="muted" id="l-prof"></div>
+          </div>
+        </div>
+        <span id="l-estado" class="pilula"><span class="ponto"></span> Carregando…</span>
+      </div>
+
+      <div class="landing-grade">
+        <div class="cartao instrucoes">
+          <h2>Instruções</h2>
+          <ol>
+            <li>A prova é <b>individual</b>. A única consulta permitida é a aba <b>“Material de consulta”</b>, dentro da própria prova.</li>
+            <li>Há questões <b>objetivas</b> (5 alternativas), <b>interativas</b> (arrastar e soltar: classificar, ordenar, montar tabelas e montar um DER) e <b>discursivas</b>. O valor de cada questão aparece no cabeçalho dela.</li>
+            <li>A prova acontece em <b>tela cheia</b>. Sair da tela cheia, trocar de aba, minimizar a janela ou alternar para outro programa são ações <b>registradas e enviadas ao professor</b>, com horário e duração.</li>
+            <li><b>Copiar, recortar e colar estão desativados</b> durante a prova.</li>
+            <li>As respostas são salvas no seu navegador a cada alteração e enviadas ao servidor periodicamente. Se a internet cair, continue respondendo. Se o navegador fechar, entre de novo com o <b>mesmo nome e matrícula</b>.</li>
+            <li>O relógio no topo mostra o tempo até o horário máximo. <b>Quando o tempo acabar, a prova é bloqueada e enviada automaticamente.</b></li>
+            <li>Ao final, você recebe um <b>código de consulta</b> e pode <b>baixar o arquivo</b> com suas respostas. Com o código e a matrícula, você verá a correção quando o professor liberar.</li>
+            <li>Use um computador com Chrome, Edge ou Firefox atualizados. Celulares não são recomendados.</li>
+          </ol>
+          <div id="l-extra"></div>
+        </div>
+
+        <div class="cartao">
+          <div class="janela-info" id="l-janela">
+            <span class="muted">Verificando horário da prova…</span>
+          </div>
+          <form id="f-inicio" autocomplete="off" novalidate>
+            <label class="campo"><span>Nome completo</span>
+              <input type="text" id="in-nome" maxlength="120" required placeholder="Seu nome completo">
+            </label>
+            <label class="campo"><span>Matrícula</span>
+              <input type="text" id="in-mat" maxlength="20" required placeholder="Ex.: 2026012345" inputmode="text">
+            </label>
+            <label class="check" style="margin-bottom:16px">
+              <input type="checkbox" id="in-ok">
+              <span class="peq">Li as instruções e estou ciente de que as saídas da tela cheia, trocas de aba e minimizações serão registradas.</span>
+            </label>
+            <button class="btn primario grande" id="btn-iniciar" type="submit" style="width:100%" disabled>Iniciar prova em tela cheia</button>
+          </form>
+          <div id="l-erro"></div>
+          <div id="l-ja-enviada"></div>
+          <p class="peq muted" style="margin-top:14px">Já fez a prova? <a href="consulta.html">Consultar resultado</a></p>
+        </div>
+      </div>
+      <p class="rodape-inst"><b>UEPA</b> · Universidade do Estado do Pará · Campus XX – Castanhal · Bacharelado em Engenharia de Software</p>
+    </div>
+  </section>
+
+  <!-- ===================== PROVA ===================== -->
+  <section id="tela-prova" class="oculto">
+    <header class="topo">
+      <img class="logo-topo" src="img/uepa-logo.png" alt="UEPA">
+      <div class="ident"><b id="t-nome"></b><span id="t-sub"></span></div>
+      <nav class="abas" role="tablist">
+        <button class="aba ativa" data-v="prova" role="tab">Prova</button>
+        <button class="aba" data-v="material" role="tab">Material de consulta</button>
+      </nav>
+      <div class="salvamento" id="t-salv" title="Clique para salvar agora" style="cursor:pointer">—</div>
+      <div class="relogio" id="t-relogio" title="Tempo restante">--:--</div>
+      <button class="btn sucesso" id="btn-finalizar">Finalizar prova</button>
+    </header>
+    <div id="v-prova" class="prova-corpo">
+      <aside class="lateral" id="lateral"></aside>
+      <main class="principal" id="principal"></main>
+    </div>
+    <div id="v-material" class="oculto"><div class="material" id="material"></div></div>
+  </section>
+
+  <!-- overlay: fora da tela cheia -->
+  <div id="overlay-fs" class="overlay oculto">
+    <div class="caixa">
+      <img src="img/uepa-logo.png" alt="UEPA">
+      <h2>Você está fora da tela cheia</h2>
+      <p>Este evento foi <b>registrado</b> e será enviado ao professor, com horário e duração. Para continuar respondendo, volte para a tela cheia.</p>
+      <button class="btn primario grande" id="btn-volta-fs">Voltar para a tela cheia</button>
+      <p class="peq" style="margin-top:14px">O relógio da prova continua correndo.</p>
+    </div>
+  </div>
+
+  <!-- overlay: envio / bloqueio -->
+  <div id="overlay-envio" class="overlay oculto">
+    <div class="caixa">
+      <div class="spinner" id="env-spin"></div>
+      <h2 id="env-titulo">Enviando sua prova…</h2>
+      <p id="env-msg">Não feche esta janela.</p>
+      <div id="env-acoes"></div>
+    </div>
+  </div>
+
+  <div id="aviso-evento" class="aviso-evento oculto"></div>
+
+  <!-- ===================== FIM ===================== -->
+  <section id="tela-fim" class="oculto"></section>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/marca.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/prova.js"></script>
+</body>
+</html>

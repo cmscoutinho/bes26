@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Consulta de resultado · Banco de Dados I</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="faixa-inst"></div>
+  <div class="consulta">
+    <div id="c-form-box">
+      <div class="marca">
+        <div class="marca-id">
+          <img src="img/uepa-logo.png" alt="Brasão da Universidade do Estado do Pará">
+          <div>
+            <div class="inst">Universidade do Estado do Pará · Engenharia de Software</div>
+            <div class="sobre">Banco de Dados I · Turma BES-2026</div>
+            <h1>Consulta de resultado</h1>
+          </div>
+        </div>
+      </div>
+      <div class="cartao" style="max-width:480px">
+        <p class="peq muted">Informe sua matrícula e o código de consulta que você recebeu ao enviar a prova (ele também está no arquivo que você baixou).</p>
+        <form id="f-consulta" autocomplete="off">
+          <label class="campo"><span>Matrícula</span><input type="text" id="c-mat" maxlength="20" required></label>
+          <label class="campo"><span>Código de consulta</span><input type="text" id="c-cod" maxlength="12" required style="font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase"></label>
+          <button class="btn primario" type="submit" style="width:100%">Ver minha prova</button>
+        </form>
+        <div id="c-erro"></div>
+      </div>
+      <p class="peq muted" style="margin-top:14px"><a href="index.html">← Página da prova</a></p>
+      <p class="rodape-inst"><b>UEPA</b> · Universidade do Estado do Pará · Campus XX – Castanhal</p>
+    </div>
+    <div id="c-resultado" class="oculto"></div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/consulta.js"></script>
+</body>
+</html>

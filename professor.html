@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Painel do professor · Prova Banco de Dados I</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="faixa-inst"></div>
+  <section id="login" class="landing">
+    <div class="landing-caixa" style="max-width:420px">
+      <div class="cartao">
+        <div style="text-align:center;margin-bottom:10px"><img src="img/uepa-logo.png" alt="Brasão da UEPA" style="height:96px"></div>
+        <div class="peq" style="text-align:center;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--bordo)">Universidade do Estado do Pará</div>
+        <h1 style="margin-top:4px;text-align:center;color:var(--bordo-escuro)">Painel do professor</h1>
+        <form id="f-login">
+          <label class="campo"><span>Senha</span><input type="password" id="in-senha" autocomplete="current-password" required></label>
+          <button class="btn primario" style="width:100%" type="submit">Entrar</button>
+        </form>
+        <div id="login-erro"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="app" class="oculto">
+    <header class="prof-topo">
+      <img class="logo-topo" src="img/uepa-logo.png" alt="UEPA">
+      <h1>Painel do professor <span style="font-weight:400;opacity:.75;font-size:.85rem">· UEPA · Banco de Dados I</span></h1>
+      <span id="p-estado" class="pilula"></span>
+      <span id="p-janela" class="peq" style="opacity:.8"></span>
+      <span style="margin-left:auto"></span>
+      <label class="check peq" style="align-items:center"><input type="checkbox" id="chk-auto"> Atualizar a cada 30 s</label>
+      <button class="btn mini" id="btn-atualizar">↻ Atualizar</button>
+      <button class="btn mini fantasma" id="btn-sair" style="color:#fff">Sair</button>
+    </header>
+    <nav class="prof-abas">
+      <button class="prof-aba ativa" data-aba="acomp">Acompanhamento e notas</button>
+      <button class="prof-aba" data-aba="config">Configuração</button>
+      <button class="prof-aba" data-aba="llm">Correção com LLM</button>
+      <button class="prof-aba" data-aba="eventos">Eventos de monitoramento</button>
+    </nav>
+    <main class="prof-corpo">
+      <div id="aba-acomp"></div>
+      <div id="aba-config" class="oculto"></div>
+      <div id="aba-llm" class="oculto"></div>
+      <div id="aba-eventos" class="oculto"></div>
+    </main>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/professor.js"></script>
+</body>
+</html>
